@@ -2,8 +2,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle">
-            <gradient android:startColor="@color/wolox_secondary_color_grad"
-                android:endColor="@color/wolox_main_color_grad"
+            <gradient android:startColor="@color/wolox_secondary_blue"
+                android:endColor="@color/wolox_main_gren"
                 android:type="linear"
                 android:angle="90" />
         </shape>
