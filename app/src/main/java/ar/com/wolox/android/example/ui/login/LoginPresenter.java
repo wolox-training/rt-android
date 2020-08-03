@@ -8,4 +8,10 @@ class LoginPresenter extends BasePresenter<LoginView> {
 
     @Inject
     LoginPresenter(){};
+
+    public void onLoginButtonClick(String email, String password) {
+        if (email.isEmpty()) {
+            getView().showEmailEmptyError();
+        }
+    }
 }
