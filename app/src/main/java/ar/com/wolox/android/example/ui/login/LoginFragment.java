@@ -13,8 +13,8 @@ import ar.com.wolox.wolmo.core.fragment.WolmoFragment;
  */
 public class LoginFragment extends WolmoFragment<LoginPresenter> implements LoginView {
 
-    private EditText loginInputEmail;
-    private EditText loginInputPassword;
+    private EditText loginEmail;
+    private EditText loginPassword;
     private Button loginButton;
 
     @Override
@@ -24,9 +24,11 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
 
     @Override
     public void init() {
-        loginInputEmail = getView().findViewById(R.id.vEmailInputLogin);
-        loginInputPassword = getView().findViewById(R.id.vPasswordInputLogin);
+        loginEmail = getView().findViewById(R.id.vEmailInputLogin);
+        loginPassword = getView().findViewById(R.id.vPasswordInputLogin);
         loginButton = getView().findViewById(R.id.vButtonLogin);
+
+        getPresenter().checkIfUserLogged(loginEmail.toString().trim());
     }
 
     @Override
@@ -35,20 +37,35 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
             @Override
             public void onClick(View v) {
                 getPresenter().onLoginButtonClick(
-                    loginInputEmail.getText().toString().trim(),
-                    loginInputPassword.getText().toString().trim()
+                    loginEmail.getText().toString().trim(),
+                    loginPassword.getText().toString().trim()
                 );
             }
         });
     }
 
     @Override
-    public void showEmail(String email) {
-        Toast.makeText(requireContext(), email, Toast.LENGTH_LONG).show();
+    public void showEmailEmptyError() {
+        loginEmail.setError(getString(R.string.emailEmptyError));
     }
 
     @Override
-    public void showEmailEmptyError() {
-        loginInputEmail.setError("Email can't be empty");
+    public void showEmailInvalidError() {
+        loginEmail.setError(getString(R.string.emailInvalidError));
+    }
+
+    @Override
+    public void showPasswordEmptyError() {
+        loginPassword.setError(getString(R.string.passwordEmptyError));
+    }
+
+    @Override
+    public void showValidCredentialsMessage() {
+        Toast.makeText(requireContext(), "User logged", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showUserLoggedMessage(String username) {
+        Toast.makeText(requireContext(), "User " + username + " is logged", Toast.LENGTH_SHORT).show();
     }
 }
