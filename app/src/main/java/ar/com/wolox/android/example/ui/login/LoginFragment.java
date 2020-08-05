@@ -1,8 +1,10 @@
 package ar.com.wolox.android.example.ui.login;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ar.com.wolox.android.R;
@@ -16,6 +18,8 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
     private EditText loginEmail;
     private EditText loginPassword;
     private Button loginButton;
+    private Button signupButton;
+    private TextView termsConditionsLink;
 
     @Override
     public int layout() {
@@ -27,6 +31,8 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
         loginEmail = getView().findViewById(R.id.vEmailInputLogin);
         loginPassword = getView().findViewById(R.id.vPasswordInputLogin);
         loginButton = getView().findViewById(R.id.vButtonLogin);
+        signupButton = getView().findViewById(R.id.vButtonSignUp);
+        termsConditionsLink = getView().findViewById(R.id.vTermsAndConditionsLoginLink);
 
         getPresenter().checkIfUserLogged(loginEmail.toString().trim());
     }
@@ -40,6 +46,18 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
                     loginEmail.getText().toString().trim(),
                     loginPassword.getText().toString().trim()
                 );
+            }
+        });
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getPresenter().onSignupButtonClick();
+            }
+        });
+        termsConditionsLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getPresenter().onTermsConditionsLinkClick(getString(R.string.termConditionsUrl));
             }
         });
     }
@@ -67,5 +85,10 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
     @Override
     public void showUserLoggedMessage(String username) {
         Toast.makeText(requireContext(), "User " + username + " is logged", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void openBrowser(Intent intent) {
+        startActivity(intent);
     }
 }

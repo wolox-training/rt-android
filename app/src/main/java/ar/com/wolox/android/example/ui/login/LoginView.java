@@ -1,5 +1,7 @@
 package ar.com.wolox.android.example.ui.login;
 
+import android.content.Intent;
+
 interface LoginView {
 
     void showEmailEmptyError();
@@ -11,4 +13,6 @@ interface LoginView {
     void showValidCredentialsMessage();
 
     void showUserLoggedMessage(String username);
+
+    void openBrowser(Intent intent);
 }

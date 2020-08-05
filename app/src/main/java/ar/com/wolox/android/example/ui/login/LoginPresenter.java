@@ -1,5 +1,7 @@
 package ar.com.wolox.android.example.ui.login;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Patterns;
 
 import javax.inject.Inject;
@@ -14,6 +16,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
 
     private UserSession userSession;
     private boolean validCredentials;
+    private String protocol = "https://";
 
     @Inject
     LoginPresenter(UserSession userSession) {
@@ -52,5 +55,17 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         if (userSession.getUsername() != null && !userSession.getUsername().isEmpty()) {
             getView().showUserLoggedMessage(userSession.getUsername());
         }
+    }
+
+    public void onSignupButtonClick() {
+    }
+
+    public void onTermsConditionsLinkClick(String url) {
+        if (!url.startsWith(protocol)) {
+            url = protocol + url;
+        }
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        getView().openBrowser(intent);
     }
 }

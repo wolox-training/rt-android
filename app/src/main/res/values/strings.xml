@@ -29,4 +29,7 @@
     <string name="emailEmptyError">Email can\'t be empty</string>
     <string name="emailInvalidError">Invalid email address</string>
     <string name="passwordEmptyError">Password can\'t be empty</string>
+
+    <!-- Navidation -->
+    <string name="termConditionsUrl">www.wolox.com.ar/</string>
 </resources>
