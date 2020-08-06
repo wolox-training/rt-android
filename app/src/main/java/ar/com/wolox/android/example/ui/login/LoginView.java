@@ -9,6 +9,4 @@ interface LoginView {
     void showEmailInvalidError();
 
     void showValidCredentialsMessage();
-
-    void showUserLoggedMessage(String username);
 }

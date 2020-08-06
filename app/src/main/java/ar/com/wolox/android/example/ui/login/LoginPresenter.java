@@ -25,10 +25,9 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         validateEmail(email);
         validatePassword(password);
         if (validCredentials) {
-            userSession.setUsername(email);
+            userSession.setEmail(email);
             getView().showValidCredentialsMessage();
         }
-
     }
 
     private void validateEmail(String email) {
@@ -45,12 +44,6 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         if (password.isEmpty()) {
             getView().showPasswordEmptyError();
             validCredentials = false;
-        }
-    }
-
-    public void checkIfUserLogged(String email) {
-        if (userSession.getUsername() != null && !userSession.getUsername().isEmpty()) {
-            getView().showUserLoggedMessage(userSession.getUsername());
         }
     }
 }

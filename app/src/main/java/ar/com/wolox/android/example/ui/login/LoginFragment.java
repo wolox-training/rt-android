@@ -27,8 +27,6 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
         loginEmail = getView().findViewById(R.id.vEmailInputLogin);
         loginPassword = getView().findViewById(R.id.vPasswordInputLogin);
         loginButton = getView().findViewById(R.id.vButtonLogin);
-
-        getPresenter().checkIfUserLogged(loginEmail.toString().trim());
     }
 
     @Override
@@ -62,10 +60,5 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
     @Override
     public void showValidCredentialsMessage() {
         Toast.makeText(requireContext(), "User logged", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showUserLoggedMessage(String username) {
-        Toast.makeText(requireContext(), "User " + username + " is logged", Toast.LENGTH_SHORT).show();
     }
 }
