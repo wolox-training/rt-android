@@ -10,9 +10,11 @@ interface LoginView {
 
     void showEmailInvalidError();
 
-    void showValidCredentialsMessage();
-
     void showUserLoggedMessage(String username);
 
     void openBrowser(Intent intent);
+
+    void navigateToHomePage();
+
+    void navigateToSignUpPage();
 }

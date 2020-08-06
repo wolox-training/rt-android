@@ -29,7 +29,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         validatePassword(password);
         if (validCredentials) {
             userSession.setUsername(email);
-            getView().showValidCredentialsMessage();
+            getView().navigateToHomePage();
         }
 
     }
@@ -58,6 +58,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
     }
 
     public void onSignupButtonClick() {
+        getView().navigateToSignUpPage();
     }
 
     public void onTermsConditionsLinkClick(String url) {

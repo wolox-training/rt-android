@@ -8,6 +8,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ar.com.wolox.android.R;
+import ar.com.wolox.android.example.ui.home.HomeActivity;
+import ar.com.wolox.android.example.ui.signup.SignupActivity;
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment;
 
 /**
@@ -78,11 +80,6 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
     }
 
     @Override
-    public void showValidCredentialsMessage() {
-        Toast.makeText(requireContext(), "User logged", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
     public void showUserLoggedMessage(String username) {
         Toast.makeText(requireContext(), "User " + username + " is logged", Toast.LENGTH_SHORT).show();
     }
@@ -90,5 +87,15 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
     @Override
     public void openBrowser(Intent intent) {
         startActivity(intent);
+    }
+
+    @Override
+    public void navigateToHomePage() {
+        HomeActivity.start(requireContext());
+    }
+
+    @Override
+    public void navigateToSignUpPage() {
+        SignupActivity.start(requireContext());
     }
 }
