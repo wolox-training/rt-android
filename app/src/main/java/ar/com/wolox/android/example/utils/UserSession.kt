@@ -28,7 +28,7 @@ class UserSession @Inject constructor(private val sharedPreferencesManager: Shar
         }
 
     val userIsLogged: Boolean?
-        get() = email != null
+        get() = !email.isNullOrEmpty()
 
     fun clearEmail(email: String) = sharedPreferencesManager.clearKey(email)
 }
