@@ -18,7 +18,7 @@ public class HomePresenter extends BasePresenter<HomeView> {
     }
 
     public void onLogoutLinkClick() {
-        userSession.clearEmail(userSession.getEmail());
+        userSession.clearEmail();
         getView().logoutHome();
     }
 }

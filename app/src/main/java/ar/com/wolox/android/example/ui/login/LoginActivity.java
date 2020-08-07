@@ -23,6 +23,8 @@ public class LoginActivity extends WolmoActivity {
 
     public static void start(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 }

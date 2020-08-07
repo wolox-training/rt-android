@@ -21,14 +21,18 @@ class UserSession @Inject constructor(private val sharedPreferencesManager: Shar
         }
 
     var email: String? = null
-        get() = sharedPreferencesManager["email", null]
+        get() = sharedPreferencesManager[EMAIL_KEY, null]
         set(email) {
             field = email
-            sharedPreferencesManager.store("email", email)
+            sharedPreferencesManager.store(EMAIL_KEY, email)
         }
 
     val userIsLogged: Boolean?
         get() = !email.isNullOrEmpty()
 
-    fun clearEmail(email: String) = sharedPreferencesManager.clearKey(email)
+    fun clearEmail() = sharedPreferencesManager.clearKey(EMAIL_KEY)
+
+    companion object {
+        private const val EMAIL_KEY = "email"
+    }
 }
