@@ -9,11 +9,24 @@
         android:id="@+id/vHomeTitleView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home"
+        android:text="@string/home"
         android:layout_marginTop="20dp"
         android:textSize="50sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
+
+    <TextView
+        android:id="@+id/vLogoutLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="@string/logout"
+        android:clickable="true"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

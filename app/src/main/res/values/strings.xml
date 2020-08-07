@@ -30,6 +30,8 @@
     <string name="emailInvalidError">Invalid email address</string>
     <string name="passwordEmptyError">Password can\'t be empty</string>
 
-    <!-- Navidation -->
+    <!-- Navigation -->
     <string name="termConditionsUrl">www.wolox.com.ar/</string>
+    <string name="home">Home</string>
+    <string name="logout"><u>Logout</u></string>
 </resources>

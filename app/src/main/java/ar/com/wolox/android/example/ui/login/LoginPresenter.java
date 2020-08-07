@@ -29,7 +29,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         validatePassword(password);
         if (validCredentials) {
             userSession.setEmail(email);
-            getView().showValidCredentialsMessage();
+            getView().navigateToHomePage();
         }
     }
 
