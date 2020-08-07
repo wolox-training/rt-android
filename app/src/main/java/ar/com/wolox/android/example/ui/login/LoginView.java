@@ -17,4 +17,6 @@ interface LoginView {
     void navigateToHomePage();
 
     void navigateToSignUpPage();
+
+    void showValidCredentialsMessage();
 }
