@@ -24,4 +24,9 @@
     <string name="login_sign_up_button">Sign Up</string>
     <string name="login_terms_conditions_text">By joining you agree to our </string>
     <string name="login_terms_conditions_link"><u>Terms &amp; Conditions</u></string>
+
+    <!-- Validation -->
+    <string name="emailEmptyError">Email can\'t be empty</string>
+    <string name="emailInvalidError">Invalid email address</string>
+    <string name="passwordEmptyError">Password can\'t be empty</string>
 </resources>
