@@ -14,6 +14,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
 
     private UserSession userSession;
     private boolean validCredentials;
+    private String protocol = "https://";
 
     @Inject
     LoginPresenter(UserSession userSession) {
@@ -26,7 +27,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         validatePassword(password);
         if (validCredentials) {
             userSession.setEmail(email);
-            getView().showValidCredentialsMessage();
+            getView().navigateToHomePage();
         }
     }
 
@@ -45,5 +46,13 @@ public class LoginPresenter extends BasePresenter<LoginView> {
             getView().showPasswordEmptyError();
             validCredentials = false;
         }
+    }
+
+    public void onSignupButtonClick() {
+        getView().navigateToSignUpPage();
+    }
+
+    public void onTermsConditionsLinkClick() {
+        getView().navigateToTermsConditions();
     }
 }

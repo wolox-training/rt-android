@@ -8,5 +8,9 @@ interface LoginView {
 
     void showEmailInvalidError();
 
-    void showValidCredentialsMessage();
+    void navigateToHomePage();
+
+    void navigateToSignUpPage();
+
+    void navigateToTermsConditions();
 }

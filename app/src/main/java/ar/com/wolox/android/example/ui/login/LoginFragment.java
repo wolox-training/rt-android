@@ -1,11 +1,15 @@
 package ar.com.wolox.android.example.ui.login;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import ar.com.wolox.android.R;
+import ar.com.wolox.android.example.ui.home.HomeActivity;
+import ar.com.wolox.android.example.ui.signup.SignupActivity;
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment;
 
 /**
@@ -16,6 +20,9 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
     private EditText loginEmail;
     private EditText loginPassword;
     private Button loginButton;
+    private Button signupButton;
+    private TextView termsConditionsLink;
+    private static final String PROTOCOL = "https://";
 
     @Override
     public int layout() {
@@ -27,6 +34,8 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
         loginEmail = getView().findViewById(R.id.vEmailInputLogin);
         loginPassword = getView().findViewById(R.id.vPasswordInputLogin);
         loginButton = getView().findViewById(R.id.vButtonLogin);
+        signupButton = getView().findViewById(R.id.vButtonSignUp);
+        termsConditionsLink = getView().findViewById(R.id.vTermsAndConditionsLoginLink);
     }
 
     @Override
@@ -38,6 +47,18 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
                     loginEmail.getText().toString().trim(),
                     loginPassword.getText().toString().trim()
                 );
+            }
+        });
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getPresenter().onSignupButtonClick();
+            }
+        });
+        termsConditionsLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getPresenter().onTermsConditionsLinkClick();
             }
         });
     }
@@ -58,7 +79,24 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
     }
 
     @Override
-    public void showValidCredentialsMessage() {
-        Toast.makeText(requireContext(), "User logged", Toast.LENGTH_SHORT).show();
+    public void navigateToHomePage() {
+        HomeActivity.start(requireContext());
+    }
+
+    @Override
+    public void navigateToSignUpPage() {
+        SignupActivity.start(requireContext());
+    }
+
+    @Override
+    public void navigateToTermsConditions() {
+        String url = getString(R.string.termConditionsUrl);
+        if (!url.startsWith(PROTOCOL)) {
+            url = PROTOCOL + url;
+        }
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        intent.setData(Uri.parse(url));
+        getActivity().startActivity(intent);
     }
 }
