@@ -1,7 +1,5 @@
 package ar.com.wolox.android.example.ui.login;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.util.Patterns;
 
 import javax.inject.Inject;
@@ -54,12 +52,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         getView().navigateToSignUpPage();
     }
 
-    public void onTermsConditionsLinkClick(String url) {
-        if (!url.startsWith(protocol)) {
-            url = protocol + url;
-        }
-        Uri uri = Uri.parse(url);
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        getView().openBrowser(intent);
+    public void onTermsConditionsLinkClick() {
+        getView().navigateToTermsConditions();
     }
 }

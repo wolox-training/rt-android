@@ -10,8 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up"
-        android:textSize="50sp"
-        android:layout_marginTop="20dp"
+        android:textSize="@dimen/font_big_title"
+        android:layout_marginTop="@dimen/static_spacing_large"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
