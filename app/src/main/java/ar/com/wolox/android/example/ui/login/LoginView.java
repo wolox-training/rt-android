@@ -13,4 +13,6 @@ interface LoginView {
     void navigateToSignUpPage();
 
     void navigateToTermsConditions();
+
+    void showInvalidCredentials();
 }

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import ar.com.wolox.android.R;
 import ar.com.wolox.android.example.ui.home.HomeActivity;
@@ -98,5 +99,10 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         intent.setData(Uri.parse(url));
         getActivity().startActivity(intent);
+    }
+
+    @Override
+    public void showInvalidCredentials() {
+        Toast.makeText(requireContext(), "Invalid credentials", Toast.LENGTH_SHORT).show();
     }
 }
