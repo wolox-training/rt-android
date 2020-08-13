@@ -105,4 +105,9 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
     public void showInvalidCredentials() {
         Toast.makeText(requireContext(), "Invalid credentials", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void showNetworkErrorConnection() {
+        Toast.makeText(requireContext(), "Network connection error", Toast.LENGTH_SHORT).show();
+    }
 }

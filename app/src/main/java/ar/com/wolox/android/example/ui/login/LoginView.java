@@ -15,4 +15,6 @@ interface LoginView {
     void navigateToTermsConditions();
 
     void showInvalidCredentials();
+
+    void showNetworkErrorConnection();
 }

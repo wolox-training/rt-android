@@ -3,12 +3,14 @@ package ar.com.wolox.android.example.ui.login;
 import android.util.Log;
 import android.util.Patterns;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import javax.inject.Inject;
 
 import ar.com.wolox.android.example.model.User;
-import ar.com.wolox.android.example.network.requests.UserAdapter;
+import ar.com.wolox.android.example.network.repository.UserRepository;
 import ar.com.wolox.android.example.utils.UserSession;
 import ar.com.wolox.wolmo.core.presenter.BasePresenter;
 import retrofit2.Call;
@@ -21,12 +23,17 @@ import retrofit2.Response;
 public class LoginPresenter extends BasePresenter<LoginView> {
 
     private UserSession userSession;
+    private UserRepository userRepository;
     private boolean validCredentials;
     private static final String TAG_LOGIN_ERROR = "LOGIN ERROR";
 
     @Inject
-    LoginPresenter(UserSession userSession) {
+    LoginPresenter(
+        UserSession userSession,
+        UserRepository userRepository
+    ) {
         this.userSession = userSession;
+        this.userRepository = userRepository;
     };
 
     /**
@@ -38,16 +45,16 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         validateEmail(email);
         validatePassword(password);
         if (validCredentials) {
-            Call<List<User>> call = new UserAdapter().getApiUserService().getLogin(email, password);
+            Call<List<User>> call = userRepository.service().getLogin(email, password);
             call.enqueue(new Callback<List<User>>() {
                 @Override
-                public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                public void onResponse(@NotNull Call<List<User>> call, @NotNull Response<List<User>> response) {
                     if (response.isSuccessful()) {
-                        if (response.body().size() == 1) {
+                        if (response.body().isEmpty()) {
+                            getView().showInvalidCredentials();
+                        } else {
                             userSession.setEmail(email);
                             getView().navigateToHomePage();
-                        } else {
-                            getView().showInvalidCredentials();
                         }
                     } else {
                         Log.d(TAG_LOGIN_ERROR, "Error: " + response.code());
@@ -55,8 +62,9 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 }
 
                 @Override
-                public void onFailure(Call<List<User>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<User>> call, @NotNull Throwable t) {
                     Log.d(TAG_LOGIN_ERROR, t.getMessage());
+                    getView().showNetworkErrorConnection();
                 }
             });
         }
