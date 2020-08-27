@@ -32,6 +32,8 @@
 
     <!-- Navigation -->
     <string name="termConditionsUrl">www.wolox.com.ar/</string>
-    <string name="home">Home</string>
     <string name="logout"><u>Logout</u></string>
+
+    <!-- Home -->
+    <string name="wolox">Wolox</string>
 </resources>
