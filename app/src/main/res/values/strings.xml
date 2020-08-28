@@ -36,4 +36,8 @@
 
     <!-- Home -->
     <string name="wolox">Wolox</string>
+    
+    <!-- Tabs -->
+    <string name="news">NEWS</string>
+    <string name="profile">PROFILE</string>
 </resources>

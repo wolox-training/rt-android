@@ -2,11 +2,11 @@ package ar.com.wolox.android.example.ui.home
 
 import android.content.Context
 import android.content.Intent
-import androidx.core.content.ContextCompat.startActivity
 import ar.com.wolox.android.R
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
+import javax.inject.Inject
 
-class HomeActivity : WolmoActivity() {
+class HomeActivity @Inject constructor() : WolmoActivity() {
 
     override fun layout() = R.layout.activity_base
 
