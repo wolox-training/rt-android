@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/vHomeLogo"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="@dimen/static_spacing_huge_extra"
+        android:layout_height="@dimen/static_spacing_huge_extra"
+        android:layout_marginStart="@dimen/spacing_big"
+        android:layout_marginTop="@dimen/spacing_big"
         android:src="@drawable/wolox_logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,10 +20,10 @@
         android:id="@+id/vHomeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="@dimen/spacing_large_extra"
         android:text="@string/wolox"
         android:textColor="@color/black"
-        android:textSize="25sp"
+        android:textSize="@dimen/font_huge"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/vHomeLogo"
         app:layout_constraintStart_toEndOf="@id/vHomeLogo"
@@ -33,14 +33,14 @@
         android:id="@+id/vHomeTabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/spacing_medium_extra"
         app:layout_constraintTop_toBottomOf="@id/vHomeLogo"
         app:tabSelectedTextColor="@color/wolox_main_gren" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vHomeViewPager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/spacing_none"
         app:layout_constraintTop_toBottomOf="@id/vHomeTabs"
         app:layout_constraintBottom_toBottomOf="parent" />
 

@@ -25,8 +25,10 @@ class HomeFragment private constructor() : WolmoFragment<HomePresenter>(), HomeV
             )
         }
         vHomeTabs.setupWithViewPager(vHomeViewPager)
-        vHomeTabs.getTabAt(NEWS_TAB_INDEX)!!.setIcon(R.drawable.news_tab_icon)
-        vHomeTabs.getTabAt(PROFILE_TAB_INDEX)!!.setIcon(R.drawable.profile_tab_icon)
+        with(vHomeTabs) {
+            getTabAt(NEWS_TAB_INDEX)!!.setIcon(R.drawable.news_tab_icon)
+            getTabAt(PROFILE_TAB_INDEX)!!.setIcon(R.drawable.profile_tab_icon)
+        }
     }
 
     companion object {
