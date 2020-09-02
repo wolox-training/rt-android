@@ -24,8 +24,8 @@ class HomeFragment private constructor() : WolmoFragment<HomePresenter>(), HomeV
                 profileFragment to PROFILE_TAB_TITLE
             )
         }
-        vHomeTabs.setupWithViewPager(vHomeViewPager)
         with(vHomeTabs) {
+            setupWithViewPager(vHomeViewPager)
             getTabAt(NEWS_TAB_INDEX)!!.setIcon(R.drawable.news_tab_icon)
             getTabAt(PROFILE_TAB_INDEX)!!.setIcon(R.drawable.profile_tab_icon)
         }
