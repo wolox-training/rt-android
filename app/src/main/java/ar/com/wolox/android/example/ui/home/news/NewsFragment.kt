@@ -2,6 +2,7 @@ package ar.com.wolox.android.example.ui.home.news
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import ar.com.wolox.android.R
 import ar.com.wolox.android.example.model.News
@@ -97,13 +98,21 @@ class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsV
 
     override fun layout(): Int = R.layout.fragment_news
 
-    override fun init() {}
+    override fun init() {
+        vNewsSwipeRefreshLayout.setOnRefreshListener {
+            vNewsSwipeRefreshLayout.isRefreshing = false
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        vNewsRecyclerView.apply {
-            layoutManager = LinearLayoutManager(activity)
-            adapter = NewsAdapter(newsList)
+        if (newsList.isEmpty()) {
+            Toast.makeText(requireContext(), "Don't exists news to show.", Toast.LENGTH_SHORT).show()
+        } else {
+            super.onViewCreated(view, savedInstanceState)
+            vNewsRecyclerView.apply {
+                layoutManager = LinearLayoutManager(activity)
+                adapter = NewsAdapter(newsList)
+            }
         }
     }
 

@@ -13,8 +13,8 @@ class NewsAdapter(private val list: List<News>) : RecyclerView.Adapter<NewsViewH
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        val movie: News = list[position]
-        holder.bind(movie)
+        val news: News = list[position]
+        holder.bind(news)
     }
 
     override fun getItemCount(): Int = list.size
