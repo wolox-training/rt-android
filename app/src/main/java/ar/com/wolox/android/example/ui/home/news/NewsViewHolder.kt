@@ -1,5 +1,6 @@
 package ar.com.wolox.android.example.ui.home.news
 
+import android.content.Context
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ar.com.wolox.android.R
 import ar.com.wolox.android.example.model.News
 import ar.com.wolox.android.example.utils.Dates
-import com.facebook.drawee.view.SimpleDraweeView
+import com.bumptech.glide.Glide
 
 class NewsViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.fragment_news_row, parent, false)) {
@@ -18,7 +19,7 @@ class NewsViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     private var mImageView: ImageView? = null
     private var mDescriptionView: TextView? = null
     private var mCreatedDateView: TextView? = null
-    private var mLikesView: SimpleDraweeView? = null
+    private var mLikesView: ImageView? = null
 
     init {
         mTitleView = itemView.findViewById(R.id.vNewRowTitle)
@@ -28,13 +29,25 @@ class NewsViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         mLikesView = itemView.findViewById(R.id.vNewRowLikes)
     }
 
-    fun bind(news: News) {
+    fun bind(context: Context, news: News) {
         mTitleView?.text = news.title
-        mImageView?.setImageURI(Uri.parse(news.picture))
+
+        Glide.with(context)
+            .load(Uri.parse(news.picture))
+            .placeholder(R.drawable.wolox_logo)
+            .into(mImageView)
+
         mDescriptionView?.text = news.text
         mCreatedDateView?.text = Dates.getDaysToDate(news.createdAt).toString().plus("d")
-        if ((news.likes.isEmpty())) {
-            mLikesView?.hierarchy?.setPlaceholderImage(R.drawable.ic_like_off_large)
+
+        if (news.likes.isEmpty()) {
+            Glide.with(context)
+                .load(R.drawable.ic_like_on_large)
+                .into(mLikesView)
+        } else {
+            Glide.with(context)
+                .load(R.drawable.ic_like_off_large)
+                .into(mLikesView)
         }
     }
 }

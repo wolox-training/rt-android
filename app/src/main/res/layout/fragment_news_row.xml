@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.facebook.drawee.view.SimpleDraweeView
+    <ImageView
         android:id="@+id/vNewRowImage"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -48,16 +48,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/vNewRowTitle" />
 
-    <com.facebook.drawee.view.SimpleDraweeView
+    <ImageView
         android:id="@+id/vNewRowLikes"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="15dp"
-        app:placeholderImage="@drawable/ic_like_on_large"
         app:layout_constraintStart_toEndOf="@id/vNewRowTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/vNewRowDescription"
         app:layout_constraintBottom_toBottomOf="@id/vNewRowDescription" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

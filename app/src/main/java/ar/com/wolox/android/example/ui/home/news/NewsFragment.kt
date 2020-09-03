@@ -111,7 +111,7 @@ class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsV
             super.onViewCreated(view, savedInstanceState)
             vNewsRecyclerView.apply {
                 layoutManager = LinearLayoutManager(activity)
-                adapter = NewsAdapter(newsList)
+                adapter = NewsAdapter(requireContext(), newsList)
             }
         }
     }
