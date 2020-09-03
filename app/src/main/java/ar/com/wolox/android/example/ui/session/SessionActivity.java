@@ -24,7 +24,7 @@ public class SessionActivity extends WolmoActivity {
     @Override
     public void init() {
         if (userSession.getUserIsLogged()) {
-            HomeActivity.start(this);
+            HomeActivity.Companion.start(this);
         } else {
             LoginActivity.start(this);
         }

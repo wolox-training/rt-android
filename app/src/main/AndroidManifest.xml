@@ -38,14 +38,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".example.ui.signup.SignupActivity"
-            android:screenOrientation="portrait">
+        <activity android:name=".example.ui.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".example.ui.home.HomeActivity"
+        <activity android:name=".example.ui.signup.SignupActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

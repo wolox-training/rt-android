@@ -88,7 +88,7 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
 
     @Override
     public void navigateToHomePage() {
-        HomeActivity.start(requireContext());
+        HomeActivity.Companion.start(requireContext());
     }
 
     @Override
