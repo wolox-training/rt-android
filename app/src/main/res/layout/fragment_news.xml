@@ -14,8 +14,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/vNewsRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:paddingBottom="20dp"
+            android:layout_height="@dimen/spacing_none"
+            android:paddingBottom="@dimen/static_spacing_medium"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -23,9 +23,9 @@
 
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/vNewsFab"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_margin="20dp"
+        android:layout_width="@dimen/spinner_large"
+        android:layout_height="@dimen/spinner_large"
+        android:layout_margin="@dimen/static_spacing_large"
         android:src="@drawable/ic_tick"
         app:fab_colorNormal="@color/wolox_main_gren"
         app:fab_colorPressed="@color/wolox_secondary_blue"

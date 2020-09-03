@@ -8,19 +8,19 @@
 
     <ImageView
         android:id="@+id/vNewRowImage"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="@dimen/image_medium_large"
+        android:layout_height="@dimen/image_medium_large"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_big"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/vNewRowTitle"
-        android:layout_width="200dp"
+        android:layout_width="@dimen/layout_large"
         android:layout_height="wrap_content"
         android:textSize="@dimen/font_large"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="@dimen/spacing_medium_more"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="@id/vNewRowImage"
         app:layout_constraintStart_toEndOf="@id/vNewRowImage"
@@ -29,10 +29,10 @@
 
     <TextView
         android:id="@+id/vNewRowDescription"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/spacing_none"
         android:layout_height="wrap_content"
         android:textSize="@dimen/font_medium"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="@dimen/spacing_small"
         app:layout_constraintStart_toStartOf="@id/vNewRowTitle"
         app:layout_constraintEnd_toEndOf="@id/vNewRowTitle"
         app:layout_constraintTop_toBottomOf="@id/vNewRowTitle"
@@ -50,9 +50,9 @@
 
     <ImageView
         android:id="@+id/vNewRowLikes"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="@dimen/image_medium"
+        android:layout_height="@dimen/image_medium"
+        android:layout_marginTop="@dimen/spacing_large"
         app:layout_constraintStart_toEndOf="@id/vNewRowTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/vNewRowDescription"
