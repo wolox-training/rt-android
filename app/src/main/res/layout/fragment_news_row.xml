@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/vNewRowImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/vNewRowTitle"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_large"
+        android:layout_marginStart="10dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/vNewRowImage"
+        app:layout_constraintStart_toEndOf="@id/vNewRowImage"
+        android:ellipsize="end"
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/vNewRowDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_medium"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="@id/vNewRowTitle"
+        app:layout_constraintEnd_toEndOf="@id/vNewRowTitle"
+        app:layout_constraintTop_toBottomOf="@id/vNewRowTitle"
+        android:ellipsize="end"
+        android:maxLines="2" />
+
+    <TextView
+        android:id="@+id/vNewRowCreatedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_medium"
+        app:layout_constraintStart_toEndOf="@id/vNewRowTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/vNewRowTitle" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/vNewRowLikes"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        app:placeholderImage="@drawable/ic_like_on_large"
+        app:layout_constraintStart_toEndOf="@id/vNewRowTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/vNewRowDescription"
+        app:layout_constraintBottom_toBottomOf="@id/vNewRowDescription" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
