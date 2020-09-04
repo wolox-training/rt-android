@@ -5,6 +5,7 @@ import ar.com.wolox.android.example.TrainingApplication
 import ar.com.wolox.android.example.ui.example.ExampleModule
 import ar.com.wolox.android.example.ui.home.HomeModule
 import ar.com.wolox.android.example.ui.login.LoginModule
+import ar.com.wolox.android.example.ui.newsDetail.NewsDetailModule
 import ar.com.wolox.android.example.ui.signup.SignupModule
 import ar.com.wolox.android.example.ui.session.SessionModule
 import ar.com.wolox.android.example.ui.viewpager.ViewPagerActivityModule
@@ -21,7 +22,7 @@ import dagger.android.support.AndroidSupportInjectionModule
 @Component(dependencies = [NetworkingComponent::class],
         modules = [AndroidSupportInjectionModule::class, DefaultModule::class, ContextModule::class,
             ExampleModule::class, ViewPagerActivityModule::class, SessionModule::class, LoginModule::class, SignupModule::class,
-            HomeModule::class])
+            HomeModule::class, NewsDetailModule::class])
 interface AppComponent : AndroidInjector<TrainingApplication> {
 
     @Component.Builder
