@@ -28,6 +28,10 @@ class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsV
         vNewsRecyclerView.adapter = NewsAdapter(requireContext(), newsList)
     }
 
+    override fun showNetworkError() {
+        Toast.makeText(requireContext(), "Network connection error", Toast.LENGTH_SHORT).show()
+    }
+
     companion object {
         fun newInstance() = NewsFragment()
     }
