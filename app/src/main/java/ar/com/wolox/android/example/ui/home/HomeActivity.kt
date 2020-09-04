@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import ar.com.wolox.android.R
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
-import com.facebook.drawee.backends.pipeline.Fresco
 import javax.inject.Inject
 
 class HomeActivity @Inject constructor() : WolmoActivity() {
@@ -13,7 +12,6 @@ class HomeActivity @Inject constructor() : WolmoActivity() {
 
     override fun init() {
         replaceFragment(R.id.vActivityBaseContent, HomeFragment.newInstance())
-        Fresco.initialize(this)
     }
 
     companion object {
