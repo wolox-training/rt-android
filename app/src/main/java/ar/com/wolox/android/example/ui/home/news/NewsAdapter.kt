@@ -12,7 +12,7 @@ import ar.com.wolox.android.example.model.News
 import ar.com.wolox.android.example.utils.Dates
 import com.bumptech.glide.Glide
 
-class NewsAdapter(private val context: Context, private val list: List<News>) : RecyclerView.Adapter<NewsViewHolder>() {
+class NewsAdapter(private val context: Context, private var list: List<News>) : RecyclerView.Adapter<NewsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -25,6 +25,17 @@ class NewsAdapter(private val context: Context, private val list: List<News>) : 
     }
 
     override fun getItemCount(): Int = list.size
+
+    fun clearNews() {
+        list = emptyList()
+        notifyDataSetChanged()
+    }
+
+    fun insertNews(newsToAdd: List<News>) {
+        val lastPosition = list.size
+        list = list.plus(newsToAdd)
+        notifyItemRangeInserted(lastPosition, list.size)
+    }
 }
 
 class NewsViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
