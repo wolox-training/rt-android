@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class NewsPresenter @Inject constructor(private val newsRepository: NewsRepository) : BasePresenter<NewsView>() {
 
-    fun getNews() {
+    override fun onViewAttached() {
         val newsList = newsRepository.getNews()
         if (newsList.isEmpty()) {
             view?.showEmptyNews()

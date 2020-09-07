@@ -55,14 +55,6 @@ class NewsViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         newDescription?.text = news.text
         createdDate?.text = Dates.getDaysToDate(news.createdAt).toString().plus("d")
 
-        if (news.likes.isEmpty()) {
-            Glide.with(context)
-                    .load(R.drawable.ic_like_on_large)
-                    .into(likes)
-        } else {
-            Glide.with(context)
-                    .load(R.drawable.ic_like_off_large)
-                    .into(likes)
-        }
+        likes?.isSelected = news.likes.isNotEmpty()
     }
 }

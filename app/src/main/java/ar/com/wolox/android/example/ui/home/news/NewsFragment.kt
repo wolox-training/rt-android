@@ -14,7 +14,7 @@ class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsV
 
     override fun init() {
         vNewsRecyclerView.layoutManager = LinearLayoutManager(activity)
-        presenter.getNews()
+        presenter.onViewAttached()
         vNewsSwipeRefreshLayout.setOnRefreshListener {
             vNewsSwipeRefreshLayout.isRefreshing = false
         }
