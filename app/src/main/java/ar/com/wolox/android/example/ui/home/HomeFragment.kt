@@ -13,7 +13,8 @@ class HomeFragment private constructor() : WolmoFragment<HomePresenter>(), HomeV
     @Inject
     internal lateinit var newsFragment: NewsFragment
 
-    @Inject lateinit var profileFragment: ProfileFragment
+    @Inject
+    lateinit var profileFragment: ProfileFragment
 
     override fun layout(): Int = R.layout.fragment_home
 

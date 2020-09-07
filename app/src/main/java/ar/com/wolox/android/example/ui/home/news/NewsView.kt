@@ -1,3 +1,8 @@
 package ar.com.wolox.android.example.ui.home.news
 
-interface NewsView
+import ar.com.wolox.android.example.model.News
+
+interface NewsView {
+    fun showEmptyNews()
+    fun showNews(newsList: List<News>)
+}
