@@ -6,4 +6,5 @@ interface NewsView {
     fun showEmptyNews()
     fun showNews(newsList: List<News>)
     fun showNetworkError()
+    abstract fun showRefreshedNews(newsToRefresh: List<News>)
 }

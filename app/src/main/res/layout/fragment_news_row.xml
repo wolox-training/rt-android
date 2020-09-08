@@ -52,6 +52,7 @@
         android:layout_width="@dimen/image_medium"
         android:layout_height="@dimen/image_medium"
         android:layout_marginTop="@dimen/spacing_large"
+        android:src="@drawable/news_like_icon"
         app:layout_constraintBottom_toBottomOf="@id/vNewRowDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/vNewRowTitle"
