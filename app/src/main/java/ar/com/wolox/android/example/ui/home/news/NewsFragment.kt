@@ -1,7 +1,6 @@
 package ar.com.wolox.android.example.ui.home.news
 
 import android.widget.Toast
-import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.wolox.android.R
@@ -9,7 +8,6 @@ import ar.com.wolox.android.example.model.News
 import ar.com.wolox.android.example.ui.home.newsDetail.NewsDetailFragment
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_news.*
-import org.greenrobot.eventbus.EventBus
 import javax.inject.Inject
 
 class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsView, NewsAdapter.NewsClickListener {
