@@ -1,7 +1,6 @@
 package ar.com.wolox.android.example.ui.home.news
 
 import android.util.Log
-import androidx.recyclerview.widget.LinearLayoutManager
 import ar.com.wolox.android.example.model.News
 import ar.com.wolox.android.example.network.repository.NewsRepository
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
@@ -35,10 +34,7 @@ class NewsPresenter @Inject constructor(private val newsRepository: NewsReposito
         })
     }
 
-    fun onScrollList(linearLayoutManager: LinearLayoutManager) {
-        val visibleItemsCount = linearLayoutManager.childCount
-        val totalItemCount = linearLayoutManager.itemCount
-        val firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition()
+    fun onScrollList(visibleItemsCount: Int, firstVisibleItemPosition: Int, totalItemCount: Int) {
         if ((visibleItemsCount + firstVisibleItemPosition) >= (totalItemCount - POS_TO_LOAD_NEW_NEWS) && firstVisibleItemPosition >= 0) {
             view?.showNews(newsRepository.getNewsHardcode())
         }

@@ -16,21 +16,24 @@ class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsV
 
     override fun init() {
         newsAdapter = NewsAdapter(requireContext(), emptyList())
-        vNewsRecyclerView.apply {
+        vNewsRecyclerView.run {
             layoutManager = LinearLayoutManager(activity)
             adapter = newsAdapter
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    val linearLayoutManager = vNewsRecyclerView.layoutManager as LinearLayoutManager
+                    val visibleItemsCount = linearLayoutManager.childCount
+                    val totalItemCount = linearLayoutManager.itemCount
+                    val firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition()
+                    presenter.onScrollList(visibleItemsCount, firstVisibleItemPosition, totalItemCount)
+                }
+            })
         }
         vNewsSwipeRefreshLayout.setOnRefreshListener {
             presenter.isRefreshed()
             vNewsSwipeRefreshLayout.isRefreshing = false
         }
-        vNewsRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                val linearLayoutManager = vNewsRecyclerView.layoutManager as LinearLayoutManager
-                presenter.onScrollList(linearLayoutManager)
-            }
-        })
     }
 
     override fun showEmptyNews() {
