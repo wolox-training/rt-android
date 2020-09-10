@@ -1,6 +1,7 @@
 package ar.com.wolox.android.example.ui.home.news
 
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.wolox.android.R
@@ -13,6 +14,8 @@ import javax.inject.Inject
 class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsView, NewsAdapter.NewsClickListener {
 
     private lateinit var newsAdapter: NewsAdapter
+    private val newsViewModel: NewsViewModel by activityViewModels()
+
     override fun layout(): Int = R.layout.fragment_news
 
     override fun init() {
@@ -59,6 +62,7 @@ class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsV
     }
 
     override fun onNewsClickListener(data: News) {
+        newsViewModel.saveNewSelected(data)
         activity?.supportFragmentManager?.beginTransaction()
             ?.replace(R.id.vActivityBaseContent, NewsDetailFragment.newInstance())
             ?.addToBackStack(null)?.commit()

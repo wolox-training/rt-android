@@ -16,6 +16,10 @@ class NewsRepository @Inject constructor(private val retrofitServices: RetrofitS
 
     fun getNewsToRefresh(): List<News> = newsToRefresh
 
+    fun getSelectedNew(id: Int) = service.getSelectedNew(id)
+
+    fun updateNew(id: Int, news: News) = service.updateNewSelected(id, news)
+
     private val newsListHardcode = listOf(
             News(
                     1,

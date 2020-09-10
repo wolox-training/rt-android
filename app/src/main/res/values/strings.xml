@@ -40,4 +40,7 @@
     <!-- Tabs -->
     <string name="news">NEWS</string>
     <string name="profile">PROFILE</string>
+
+    <!-- News Detail -->
+    <string name="post">Post</string>
 </resources>
