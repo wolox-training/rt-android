@@ -2,6 +2,7 @@ package ar.com.wolox.android.example.ui.home.news
 
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ar.com.wolox.android.R
 import ar.com.wolox.android.example.model.News
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
@@ -10,11 +11,27 @@ import javax.inject.Inject
 
 class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsView {
 
+    private lateinit var newsAdapter: NewsAdapter
     override fun layout(): Int = R.layout.fragment_news
 
     override fun init() {
-        vNewsRecyclerView.layoutManager = LinearLayoutManager(activity)
+        newsAdapter = NewsAdapter(requireContext(), emptyList())
+        vNewsRecyclerView.run {
+            layoutManager = LinearLayoutManager(activity)
+            adapter = newsAdapter
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    val linearLayoutManager = vNewsRecyclerView.layoutManager as LinearLayoutManager
+                    val visibleItemsCount = linearLayoutManager.childCount
+                    val totalItemCount = linearLayoutManager.itemCount
+                    val firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition()
+                    presenter.onScrollList(visibleItemsCount, firstVisibleItemPosition, totalItemCount)
+                }
+            })
+        }
         vNewsSwipeRefreshLayout.setOnRefreshListener {
+            presenter.isRefreshed()
             vNewsSwipeRefreshLayout.isRefreshing = false
         }
     }
@@ -24,7 +41,16 @@ class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsV
     }
 
     override fun showNews(newsList: List<News>) {
-        vNewsRecyclerView.adapter = NewsAdapter(requireContext(), newsList)
+        newsAdapter.insertNews(newsList)
+    }
+
+    override fun showNetworkError() {
+        Toast.makeText(requireContext(), "Network connection error", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showRefreshedNews(newsToRefresh: List<News>) {
+        newsAdapter.clearNews()
+        newsAdapter.insertNews(newsToRefresh)
     }
 
     companion object {
