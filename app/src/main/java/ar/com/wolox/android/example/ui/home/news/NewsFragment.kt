@@ -63,8 +63,8 @@ class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsV
 
     override fun onNewsClickListener(data: News) {
         newsViewModel.saveNewSelected(data)
-        activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.vActivityBaseContent, NewsDetailFragment.newInstance())
-            ?.addToBackStack(null)?.commit()
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.vActivityBaseContent, NewsDetailFragment.newInstance())
+            .addToBackStack(null).commit()
     }
 }

@@ -47,22 +47,22 @@ class NewsDetailFragment private constructor() : WolmoFragment<NewsDetailPresent
         }
     }
 
-    companion object {
-        fun newInstance() = NewsDetailFragment()
-    }
-
     override fun showNetworkError() {
-        Toast.makeText(requireContext(), "Network connection error", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), getString(R.string.networkConnectionError), Toast.LENGTH_SHORT).show()
         vNewsDetailRefresh.isRefreshing = false
     }
 
     override fun showEmptyNewDetail() {
-        Toast.makeText(requireContext(), "There isn't News with the given ID", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), getString(R.string.newsNotFound), Toast.LENGTH_SHORT).show()
         vNewsDetailRefresh.isRefreshing = false
     }
 
     override fun refreshNewDetailFields(news: News) {
         populateViewFields(news)
         vNewsDetailRefresh.isRefreshing = false
+    }
+
+    companion object {
+        fun newInstance() = NewsDetailFragment()
     }
 }

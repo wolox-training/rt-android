@@ -43,4 +43,8 @@
 
     <!-- News Detail -->
     <string name="post">Post</string>
+
+    <!-- View messages -->
+    <string name="newsNotFound">There isn\'t News with the given ID</string>
+    <string name="networkConnectionError">Network connection error</string>
 </resources>
