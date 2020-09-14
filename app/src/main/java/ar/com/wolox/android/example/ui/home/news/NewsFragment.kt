@@ -1,5 +1,6 @@
 package ar.com.wolox.android.example.ui.home.news
 
+import android.content.Context
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,14 +10,29 @@ import ar.com.wolox.android.example.model.News
 import ar.com.wolox.android.example.ui.home.newsDetail.NewsDetailFragment
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_news.*
+import java.lang.RuntimeException
 import javax.inject.Inject
 
 class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsView, NewsAdapter.NewsClickListener {
 
     private lateinit var newsAdapter: NewsAdapter
+    private var newsFragmentListener: NewsFragmentListener? = null
     private val newsViewModel: NewsViewModel by activityViewModels()
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is NewsFragmentListener) {
+            newsFragmentListener = context
+        } else {
+            throw RuntimeException("$context must be implement NewsFragmentListener")
+        }
+    }
+
     override fun layout(): Int = R.layout.fragment_news
+
+    interface NewsFragmentListener {
+        fun onNewsClick(newsSelected: News)
+    }
 
     override fun init() {
         newsAdapter = NewsAdapter(requireContext(), emptyList(), this)
@@ -62,9 +78,14 @@ class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsV
     }
 
     override fun onNewsClickListener(data: News) {
-        newsViewModel.saveNewSelected(data)
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.vActivityBaseContent, NewsDetailFragment.newInstance())
             .addToBackStack(null).commit()
+        newsFragmentListener?.onNewsClick(data)
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        newsFragmentListener = null
     }
 }

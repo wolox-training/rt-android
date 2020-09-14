@@ -49,6 +49,10 @@ class NewsDetailPresenter @Inject constructor(private val newsRepository: NewsRe
         })
     }
 
+    fun onSetPost(title: String) {
+        view?.setTitle(title)
+    }
+
     companion object {
         const val TAG_ERROR = "NEWS DETAIL ERROR"
     }

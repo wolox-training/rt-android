@@ -19,19 +19,23 @@ class NewsDetailFragment private constructor() : WolmoFragment<NewsDetailPresent
     override fun layout(): Int = R.layout.fragment_news_detail
 
     override fun init() {
-        val newSelected = newsViewModel.getNewSelected()
-        populateViewFields(newSelected!!)
-        vNewsDetailRefresh.setOnRefreshListener {
-            presenter.onRefreshNewsDetail(newSelected.id)
-        }
-        vNewsDetailLike.setOnClickListener {
-            presenter.onUpdateLikes(newSelected.id, newSelected)
-        }
+//        val newSelected = newsViewModel.getNewSelected()
+//        populateViewFields(newSelected!!)
+//        vNewsDetailRefresh.setOnRefreshListener {
+//            presenter.onRefreshNewsDetail(newSelected.id)
+//        }
+//        vNewsDetailLike.setOnClickListener {
+//            presenter.onUpdateLikes(newSelected.id, newSelected)
+//        }
         vNewsDetailImage.setOnClickListener {
             it.layoutParams = ConstraintLayout.LayoutParams(
                 ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.MATCH_PARENT
             )
         }
+    }
+
+    fun setDetailTitle(title: String) {
+        presenter.onSetPost(title)
     }
 
     private fun populateViewFields(newSelected: News) {
@@ -60,6 +64,10 @@ class NewsDetailFragment private constructor() : WolmoFragment<NewsDetailPresent
     override fun refreshNewDetailFields(news: News) {
         populateViewFields(news)
         vNewsDetailRefresh.isRefreshing = false
+    }
+
+    override fun setTitle(title: String) {
+        vNewsDetailPost.text = title
     }
 
     companion object {
