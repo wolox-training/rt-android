@@ -14,43 +14,50 @@ class NewsDetailPresenter @Inject constructor(private val newsRepository: NewsRe
     private var call: Call<List<News>>? = null
     private var callNew: Call<News>? = null
 
-    fun onRefreshNewsDetail(id: Int) {
-        call = newsRepository.getSelectedNew(id)
-        call?.enqueue(object : Callback<List<News>> {
-            override fun onResponse(call: Call<List<News>>, response: Response<List<News>>) {
-                val newSelected = response.body()!!
-                if (newSelected.isEmpty()) {
-                    view?.showEmptyNewDetail()
-                } else {
-                    view?.refreshNewDetailFields(newSelected[0])
+    override fun onViewAttached() {
+        super.onViewAttached()
+        newsRepository.getCurrentNews()?.let {
+            view?.refreshNewDetailFields(it)
+        }
+    }
+
+    fun onRefreshNewsDetail() {
+        newsRepository.getCurrentNews()?.let {
+            call = newsRepository.getSelectedNew(it.id)
+            call?.enqueue(object : Callback<List<News>> {
+                override fun onResponse(call: Call<List<News>>, response: Response<List<News>>) {
+                    val newSelected = response.body()!!
+                    if (newSelected.isEmpty()) {
+                        view?.showEmptyNewDetail()
+                    } else {
+                        view?.refreshNewDetailFields(newSelected[0])
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<List<News>>, t: Throwable) {
-                Log.d(TAG_ERROR, t.message.toString())
-                view?.showNetworkError()
-            }
-        })
+                override fun onFailure(call: Call<List<News>>, t: Throwable) {
+                    Log.d(TAG_ERROR, t.message.toString())
+                    view?.showNetworkError()
+                }
+            })
+        }
     }
 
-    fun onUpdateLikes(id: Int, news: News) {
-        if (news.likes.isEmpty()) news.likes = listOf(news.userId) else news.likes = emptyList()
-        callNew = newsRepository.updateNew(id, news)
-        callNew?.enqueue(object : Callback<News> {
-            override fun onResponse(call: Call<News>, response: Response<News>) {
-                val newUpdated = response.body()!!
-                view?.refreshNewDetailFields(newUpdated)
-            }
+    fun onUpdateLikes() {
+        newsRepository.getCurrentNews()?.let {
+            if (it.likes.isEmpty()) it.likes = listOf(it.userId) else it.likes = emptyList()
+            callNew = newsRepository.updateNew(it.id, it)
+            callNew?.enqueue(object : Callback<News> {
+                override fun onResponse(call: Call<News>, response: Response<News>) {
+                    val newUpdated = response.body()!!
+                    view?.refreshNewDetailFields(newUpdated)
+                }
 
-            override fun onFailure(call: Call<News>, t: Throwable) {
-                Log.d(TAG_ERROR, t.message.toString())
-                view?.showNetworkError()
-            }
-        })
-    }
-
-    fun onSetPost(title: String) {
-        view?.setTitle(title)
+                override fun onFailure(call: Call<News>, t: Throwable) {
+                    Log.d(TAG_ERROR, t.message.toString())
+                    view?.showNetworkError()
+                }
+            })
+        }
     }
 
     companion object {

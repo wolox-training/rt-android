@@ -44,6 +44,11 @@ class NewsPresenter @Inject constructor(private val newsRepository: NewsReposito
         view?.showRefreshedNews(newsRepository.getNewsToRefresh())
     }
 
+    fun onNewsClicked(news: News) {
+        newsRepository.saveSelectedNews(news)
+        view?.goToSelectedNews()
+    }
+
     companion object {
         const val POS_TO_LOAD_NEW_NEWS = 6
         const val TAG_ERROR = "NEWS LIST ERROR"

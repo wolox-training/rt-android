@@ -7,4 +7,5 @@ interface NewsView {
     fun showNews(newsList: List<News>)
     fun showNetworkError()
     fun showRefreshedNews(newsToRefresh: List<News>)
+    fun goToSelectedNews()
 }

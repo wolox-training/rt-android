@@ -6,5 +6,4 @@ interface NewsDetailView {
     fun showNetworkError()
     fun showEmptyNewDetail()
     fun refreshNewDetailFields(news: News)
-    fun setTitle(title: String)
 }

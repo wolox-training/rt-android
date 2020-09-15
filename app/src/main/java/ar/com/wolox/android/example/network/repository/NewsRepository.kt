@@ -2,9 +2,11 @@ package ar.com.wolox.android.example.network.repository
 
 import ar.com.wolox.android.example.model.News
 import ar.com.wolox.android.example.network.services.NewsService
+import ar.com.wolox.wolmo.core.di.scopes.ApplicationScope
 import ar.com.wolox.wolmo.networking.retrofit.RetrofitServices
 import javax.inject.Inject
 
+@ApplicationScope
 class NewsRepository @Inject constructor(private val retrofitServices: RetrofitServices) {
 
     private val service: NewsService
@@ -19,6 +21,14 @@ class NewsRepository @Inject constructor(private val retrofitServices: RetrofitS
     fun getSelectedNew(id: Int) = service.getSelectedNew(id)
 
     fun updateNew(id: Int, news: News) = service.updateNewSelected(id, news)
+
+    private var selectedNews: News? = null
+
+    fun getCurrentNews() = selectedNews
+
+    fun saveSelectedNews(news: News) {
+        selectedNews = news
+    }
 
     private val newsListHardcode = listOf(
             News(

@@ -45,7 +45,7 @@ class NewsAdapter(
     }
 
     interface NewsClickListener {
-        fun onNewsClickListener(data: News)
+        fun onNewsClickListener(news: News)
     }
 }
 
