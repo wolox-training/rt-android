@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/vNewsDetailRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/vNewsDetailImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/wolox_logo_large"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.widget.Toolbar
+                android:id="@+id/vNewsDetailToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/news_image_bg_gradient"
+                app:layout_constraintTop_toTopOf="@id/vNewsDetailImage">
+
+                <ImageView
+                    android:id="@+id/vNewsDetailBack"
+                    android:layout_width="@dimen/image_small"
+                    android:layout_height="@dimen/image_small"
+                    android:layout_marginStart="@dimen/spacing_large_extra"
+                    android:layout_marginTop="@dimen/spacing_large_extra"
+                    android:src="@drawable/ic_back"
+                    android:tint="@android:color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/vNewsDetailPost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_big"
+                    android:text="@string/post"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_big"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/vNewsDetailBack"
+                    app:layout_constraintStart_toEndOf="@id/vNewsDetailBack"
+                    app:layout_constraintTop_toTopOf="@id/vNewsDetailBack" />
+
+            </android.widget.Toolbar>
+
+            <TextView
+                android:id="@+id/vNewsDetailTitle"
+                android:layout_width="@dimen/layout_large_extra"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large_extra"
+                android:layout_marginTop="@dimen/spacing_huge"
+                android:textColor="@color/wolox_secondary_blue"
+                android:textSize="@dimen/font_large_extra"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vNewsDetailImage" />
+
+            <TextView
+                android:id="@+id/vNewsDetailText"
+                android:layout_width="@dimen/layout_big"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:textColor="@color/darkGrey"
+                android:textSize="@dimen/font_medium_more"
+                app:layout_constraintStart_toStartOf="@id/vNewsDetailTitle"
+                app:layout_constraintTop_toBottomOf="@id/vNewsDetailTitle" />
+
+            <TextView
+                android:id="@+id/vNewsDetailDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_large_extra"
+                android:textSize="@dimen/font_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/vNewsDetailTitle" />
+
+            <ImageView
+                android:id="@+id/vNewsDetailLike"
+                android:layout_width="@dimen/image_medium_large"
+                android:layout_height="@dimen/image_medium_large"
+                android:layout_marginTop="@dimen/image_medium_large"
+                android:layout_marginBottom="@dimen/spinner_large"
+                android:src="@drawable/news_like_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vNewsDetailText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

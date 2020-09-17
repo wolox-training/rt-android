@@ -28,7 +28,7 @@ class NewsPresenter @Inject constructor(private val newsRepository: NewsReposito
             }
 
             override fun onFailure(call: Call<List<News>>, t: Throwable) {
-                Log.d("NEWS LIST ERROR", t.message.toString())
+                Log.d(TAG_ERROR, t.message.toString())
                 view?.showNetworkError()
             }
         })
@@ -44,7 +44,13 @@ class NewsPresenter @Inject constructor(private val newsRepository: NewsReposito
         view?.showRefreshedNews(newsRepository.getNewsToRefresh())
     }
 
+    fun onNewsClicked(news: News) {
+        newsRepository.saveSelectedNews(news)
+        view?.goToSelectedNews()
+    }
+
     companion object {
         const val POS_TO_LOAD_NEW_NEWS = 6
+        const val TAG_ERROR = "NEWS LIST ERROR"
     }
 }

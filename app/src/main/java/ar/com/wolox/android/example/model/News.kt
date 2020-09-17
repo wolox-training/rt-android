@@ -3,11 +3,11 @@ package ar.com.wolox.android.example.model
 import com.google.gson.annotations.SerializedName
 
 data class News(
-    @SerializedName("id") val id: Int,
-    @SerializedName("userId") val userId: Int,
-    @SerializedName("createdAt") val createdAt: String,
-    @SerializedName("title") val title: String,
-    @SerializedName("picture") val picture: String,
-    @SerializedName("text") val text: String,
-    @SerializedName("likes") val likes: List<Int>
+    @SerializedName("id") var id: Int,
+    @SerializedName("userId") var userId: Int,
+    @SerializedName("createdAt") var createdAt: String,
+    @SerializedName("title") var title: String,
+    @SerializedName("picture") var picture: String,
+    @SerializedName("text") var text: String,
+    @SerializedName("likes") var likes: List<Int>
 )

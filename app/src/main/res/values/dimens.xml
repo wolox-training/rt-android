@@ -47,8 +47,11 @@
 
     <!-- Add your custom dimens here -->
     <dimen name="font_big_title">50sp</dimen>
+    <dimen name="image_small">20dp</dimen>
     <dimen name="image_medium">30dp</dimen>
     <dimen name="image_medium_large">60dp</dimen>
     <dimen name="spinner_large">100dp</dimen>
     <dimen name="layout_large">200dp</dimen>
+    <dimen name="layout_large_extra">240dp</dimen>
+    <dimen name="layout_big">300dp</dimen>
 </resources>

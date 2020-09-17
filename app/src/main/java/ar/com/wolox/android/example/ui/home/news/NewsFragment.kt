@@ -5,17 +5,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.wolox.android.R
 import ar.com.wolox.android.example.model.News
+import ar.com.wolox.android.example.ui.home.newsDetail.NewsDetailFragment
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_news.*
 import javax.inject.Inject
 
-class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsView {
+class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsView, NewsAdapter.NewsClickListener {
 
     private lateinit var newsAdapter: NewsAdapter
+
     override fun layout(): Int = R.layout.fragment_news
 
     override fun init() {
-        newsAdapter = NewsAdapter(requireContext(), emptyList())
+        newsAdapter = NewsAdapter(requireContext(), emptyList(), this)
         vNewsRecyclerView.run {
             layoutManager = LinearLayoutManager(activity)
             adapter = newsAdapter
@@ -51,6 +53,19 @@ class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), NewsV
     override fun showRefreshedNews(newsToRefresh: List<News>) {
         newsAdapter.clearNews()
         newsAdapter.insertNews(newsToRefresh)
+    }
+
+    override fun goToSelectedNews() {
+        requireActivity()
+                .supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.vActivityBaseContent, NewsDetailFragment.newInstance())
+                .addToBackStack(null)
+                .commit()
+    }
+
+    override fun onNewsClickListener(news: News) {
+        presenter.onNewsClicked(news)
     }
 
     companion object {
