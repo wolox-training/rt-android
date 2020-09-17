@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/vNewsDetailRefresh"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -11,35 +12,8 @@
         android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/vNewsDetailBack"
-                android:layout_width="@dimen/image_small"
-                android:layout_height="@dimen/image_small"
-                android:layout_marginStart="@dimen/spacing_large_extra"
-                android:layout_marginTop="@dimen/spacing_large_extra"
-                android:elevation="@dimen/spacing_medium_more"
-                android:tint="@android:color/white"
-                android:src="@drawable/ic_back"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/vNewsDetailPost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_big"
-                android:elevation="@dimen/spacing_medium_more"
-                android:text="@string/post"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/font_big"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/vNewsDetailBack"
-                app:layout_constraintStart_toEndOf="@id/vNewsDetailBack"
-                app:layout_constraintTop_toTopOf="@id/vNewsDetailBack" />
 
             <ImageView
                 android:id="@+id/vNewsDetailImage"
@@ -48,6 +22,39 @@
                 android:adjustViewBounds="true"
                 android:src="@drawable/wolox_logo_large"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <android.widget.Toolbar
+                android:id="@+id/vNewsDetailToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/news_image_bg_gradient"
+                app:layout_constraintTop_toTopOf="@id/vNewsDetailImage">
+
+                <ImageView
+                    android:id="@+id/vNewsDetailBack"
+                    android:layout_width="@dimen/image_small"
+                    android:layout_height="@dimen/image_small"
+                    android:layout_marginStart="@dimen/spacing_large_extra"
+                    android:layout_marginTop="@dimen/spacing_large_extra"
+                    android:src="@drawable/ic_back"
+                    android:tint="@android:color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/vNewsDetailPost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_big"
+                    android:text="@string/post"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_big"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/vNewsDetailBack"
+                    app:layout_constraintStart_toEndOf="@id/vNewsDetailBack"
+                    app:layout_constraintTop_toTopOf="@id/vNewsDetailBack" />
+
+            </android.widget.Toolbar>
 
             <TextView
                 android:id="@+id/vNewsDetailTitle"
@@ -87,8 +94,8 @@
                 android:layout_marginTop="@dimen/image_medium_large"
                 android:layout_marginBottom="@dimen/spinner_large"
                 android:src="@drawable/news_like_icon"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/vNewsDetailText" />
 
